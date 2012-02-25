@@ -1,4 +1,6 @@
 Memes::Application.routes.draw do
+  resources :terms
+
   resources :documents
 
   root :to => "home#index"                               
