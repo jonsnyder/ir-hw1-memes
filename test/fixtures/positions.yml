@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  posting: 
+  offset: 1
+  length: 1
+
+two:
+  posting: 
+  offset: 1
+  length: 1

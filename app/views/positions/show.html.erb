@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Posting:</b>
+  <%= @position.posting %>
+</p>
+
+<p>
+  <b>Offset:</b>
+  <%= @position.offset %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%= @position.length %>
+</p>
+
+
+<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Back', positions_path %>

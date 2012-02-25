@@ -1,4 +1,6 @@
 Memes::Application.routes.draw do
+  resources :positions
+
   resources :postings
 
   resources :terms
