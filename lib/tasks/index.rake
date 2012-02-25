@@ -43,4 +43,8 @@ namespace :index do
       t.save!
     end
   end
+
+  desc 'This builds the index from scratch'
+  task :build => ["index:load_docs", "index:index_docs", "index:term_freq", "index:doc_freq"]
+  
 end
