@@ -1,4 +1,6 @@
 Memes::Application.routes.draw do
+  resources :postings
+
   resources :terms
 
   resources :documents

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  document: 
+  term: 
+  term_freq: 1
+
+two:
+  document: 
+  term: 
+  term_freq: 1

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Document:</b>
+  <%= @posting.document %>
+</p>
+
+<p>
+  <b>Term:</b>
+  <%= @posting.term %>
+</p>
+
+<p>
+  <b>Term freq:</b>
+  <%= @posting.term_freq %>
+</p>
+
+
+<%= link_to 'Edit', edit_posting_path(@posting) %> |
+<%= link_to 'Back', postings_path %>
