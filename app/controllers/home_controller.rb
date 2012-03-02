@@ -23,7 +23,7 @@ class HomeController < ApplicationController
       document = Document.find( document_id)
       snippets = []
       
-      Position.where( :posting_id => doc_postings[document_id].map(&:id)).order('offset').take(100).each do |position|
+      Position.where( :posting_id => doc_postings[document_id].map(&:id)).order('`offset`').take(100).each do |position|
         snippet = position.snippet( document.content)
         if snippets.count > 0 && snippets.last && snippets.last.overlaps( snippet)
           snippets[snippets.length-1] = snippets.last.combine( snippet)
