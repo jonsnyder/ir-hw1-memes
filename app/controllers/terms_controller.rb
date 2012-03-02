@@ -2,7 +2,8 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @terms = Term.order('doc_freq DESC').limit(100)
+    # @terms = Term.all
 
     respond_to do |format|
       format.html # index.html.erb
