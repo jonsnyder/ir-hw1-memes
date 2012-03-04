@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227034333) do
+ActiveRecord::Schema.define(:version => 20120304230426) do
 
   create_table "documents", :force => true do |t|
     t.string   "title"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120227034333) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "positions", ["offset"], :name => "index_positions_on_offset"
   add_index "positions", ["posting_id"], :name => "index_positions_on_posting_id"
 
   create_table "postings", :force => true do |t|
@@ -49,5 +50,7 @@ ActiveRecord::Schema.define(:version => 20120227034333) do
     t.datetime "updated_at", :null => false
     t.integer  "freq"
   end
+
+  add_index "terms", ["term"], :name => "index_terms_on_term", :unique => true
 
 end

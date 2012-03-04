@@ -1,13 +1,7 @@
 Memes::Application.routes.draw do
-  resources :positions
-
-  resources :postings
-
-  resources :terms
-
-  resources :documents
-
-  root :to => "home#index"                               
+  root :to => "home#index"
+  match "terms" => "terms#index"
+  match "documents" => "documents#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

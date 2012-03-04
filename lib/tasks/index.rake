@@ -37,10 +37,8 @@ namespace :index do
   task :term_freq => :environment do
     puts "Calculating Term Frequencies"
     puts "============================================"
-    term_frequencies = Position.select( "posting_id, count(id) as count").group("posting_id")
-    term_frequencies.each do |tf|
-      p = Posting.find( tf.posting_id)
-      p.term_freq = tf.count
+    Posting.all.each do |p|
+      p.term_freq = p.positions.count
       p.save!
     end
   end
@@ -59,15 +57,22 @@ namespace :index do
   task :doc_freq => :environment do
     puts "Calculating Document Frequencies"
     puts "============================================"
-    doc_frequencies = Posting.select( "term_id, count(id) as count").group("term_id")
-    doc_frequencies.each do |df|
-      t = Term.find( df.term_id)
-      t.doc_freq = df.count
+    Term.all.each do |t|
+      t.doc_freq = t.postings.count
       t.save!
     end
   end
 
+  task :stopwords => :environment do
+    puts "Removing 20 stopwords"
+    puts "============================================"
+    Term.order("doc_freq DESC").limit(20).each do |term|
+      puts term.term
+      term.postings.destroy_all
+    end
+  end
+
   desc 'This builds the index from scratch'
-  task :build => ["index:load_docs", "index:index_docs", "index:term_freq", "index:doc_freq", "index:freq"]
+  task :build => ["index:load_docs", "index:index_docs", "index:doc_freq", "index:stopwords", "index:term_freq", "index:freq"]
   
 end

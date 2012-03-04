@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-
+    
     query = params[:q]
     if query
 

@@ -2,7 +2,9 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.order('doc_freq DESC').limit(100)
+    sort = params[:sort] || "freq"
+    
+    @terms = Term.order(sort + ' DESC').limit(100)
     # @terms = Term.all
 
     respond_to do |format|
