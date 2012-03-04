@@ -22,6 +22,7 @@
     <th>Absolute<br/>Frequency</th>
     <th>Relative<br/>Frequency</th>
     <th>Document<br/>Frequency</th>
+    <th>Stopword</th>
   </tr>
 
 <% @terms.each_with_index do |term, i| %>
@@ -31,6 +32,7 @@
     <td><%= term.freq %></td>
     <td><%= number_to_percentage( 100 * term.freq.to_f / terms) %></td>
     <td><%= term.doc_freq %></td>
+    <td><%= term.stopword ? "Yes" : "" %></td>
   </tr>
 <% end %>
 </table>
