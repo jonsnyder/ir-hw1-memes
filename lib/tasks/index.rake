@@ -59,11 +59,10 @@ namespace :index do
     Term.order("doc_freq DESC").limit(20).each do |term|
       puts term.term
       term.stopword = true
-      term.postings.destroy_all
     end
   end
 
   desc 'This builds the index from scratch'
-  task :build => ["index:load_docs", "index:index_docs", "index:freq", "index:stopwords", "index:term_freq"]
+  task :build => ["index:load_docs", "index:index_docs", "index:term_freq", "index:freq", "index:stopwords"]
   
 end

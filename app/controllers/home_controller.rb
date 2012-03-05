@@ -10,7 +10,7 @@ class HomeController < ApplicationController
       doc_count = Document.count
       Tokenizer.scan( query) do |word|
         t = Term.find_by_term( word)
-        if t
+        if t && !t.stopword
           idf = Math::log(doc_count.to_f / t.doc_freq)
           t.postings.each do |posting|
             doc_scores[posting.document_id] += posting.term_freq * idf
