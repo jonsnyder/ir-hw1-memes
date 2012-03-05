@@ -59,6 +59,7 @@ namespace :index do
     Term.order("doc_freq DESC").limit(20).each do |term|
       puts term.term
       term.stopword = true
+      term.save!
     end
   end
 
